@@ -1,21 +1,18 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import "./App.css";
-import { Habit } from "./components/Habit";
+import './App.css';
 import './styles/global.css';
 
-function App() {
+import { useState } from 'react';
+
+import { Header } from './components/Header';
+import { SummaryTable } from './components/SummaryTable';
+
+export function App() {
   return (
-    <>
-      <h1>Hello</h1>
-      <Habit completed={3}/>
-      <Habit completed={10}/>
-      <Habit completed={20}/>
-      <Habit completed={30}/>
-      <Habit completed={40}/>
-      <Habit completed={50}/>
-    </>
+    <div className="w-screen h-screen flex justify-center items-center">
+      <div className="w-full max-w-5xl px-6 flex flex-col gap-16">
+        <Header />
+        <SummaryTable/>
+      </div>
+    </div>
   );
 }
-
-export default App;
