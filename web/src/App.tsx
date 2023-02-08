@@ -1,4 +1,5 @@
 import './App.css';
+import './lib/dayjs';
 import './styles/global.css';
 
 import { useState } from 'react';
