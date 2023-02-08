@@ -136,19 +136,20 @@ export async function appRoutes(app: FastifyInstance) {
 
     app.get('/summary', async () => {
 
-        /*
-        [
-            {
-                "id": "ad78e4f0-871d-4731-986e-b8df3c547ecf",
-                "date": "2023-01-02T03:00:00.000Z",
-                "completed": 1,
-                "amount": 2
-            },
-            ...
-        ]
-        */
+        try {
+            /*
+            [
+                {
+                    "id": "ad78e4f0-871d-4731-986e-b8df3c547ecf",
+                    "date": "2023-01-02T03:00:00.000Z",
+                    "completed": 1,
+                    "amount": 2
+                },
+                ...
+            ]
+            */
 
-        const summary = await prisma.$queryRaw`
+            const summary = await prisma.$queryRaw`
             SELECT 
                 D.id, 
                 D.date,
@@ -171,7 +172,11 @@ export async function appRoutes(app: FastifyInstance) {
             FROM days D
         `;
 
-        return summary;
+            return summary;
+
+        } catch (error) {
+            console.log(error);
+        }
 
     })
 
