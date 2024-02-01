@@ -24,6 +24,7 @@ export function HabitsList({ date, onCompletedChanged }: HabitsListProps) {
   const [habitsInfo, setHabitsInfo] = useState<HabitsInfo>();
 
   useEffect(() => {
+    console.log('click popover()')
     api.get('/day', {
       params: {
         date: date.toISOString(),
@@ -35,9 +36,9 @@ export function HabitsList({ date, onCompletedChanged }: HabitsListProps) {
 
   async function handleToggleHabit(habitId: string) {
 
-    const isHabitAlreadyCompleted = habitsInfo!.completedHabits.includes(habitId);
-
     await api.patch(`/habits/${habitId}/toggle`);
+
+    const isHabitAlreadyCompleted = habitsInfo!.completedHabits.includes(habitId);
 
     let completedHabits: string[] = [];
 
@@ -61,7 +62,6 @@ export function HabitsList({ date, onCompletedChanged }: HabitsListProps) {
 
   return (
     <div className='mt-6 flex flex-col gap-3'>
-
       {habitsInfo?.possibleHabits.map(habit => {
         return (
           <Checkbox.Root
@@ -89,7 +89,6 @@ export function HabitsList({ date, onCompletedChanged }: HabitsListProps) {
           </Checkbox.Root>
         )
       })}
-
     </div>
   )
 }
