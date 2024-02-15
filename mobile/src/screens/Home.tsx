@@ -45,15 +45,15 @@ export function Home() {
     }
   }
 
-  /*
   useFocusEffect(useCallback(() => {
     fetchData()
-  }, []))
-  */
+  }, []));
 
+  /*
   useEffect(() => {
     fetchData();
   }, []);
+  */
 
   if (loading) {
     return (
