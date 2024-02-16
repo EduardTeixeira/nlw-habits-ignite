@@ -1,6 +1,7 @@
 import cors from '@fastify/cors';
 import Fastify from 'fastify';
 
+import { notificationRoutes } from './notifications-routes';
 import { appRoutes } from './routes';
 
 const app = Fastify();
@@ -12,8 +13,8 @@ app.register(cors, {
         'http://localhost:8081'
     ]
 });
-
 app.register(appRoutes);
+app.register(notificationRoutes);
 
 app.listen({
     port: 3333,
